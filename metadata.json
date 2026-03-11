@@ -1,0 +1,5 @@
+{
+  "name": "WhatsApp Booking SaaS",
+  "description": "Multi-tenant WhatsApp SaaS with booking engine, payments, and owner dashboard.",
+  "requestFramePermissions": []
+}
