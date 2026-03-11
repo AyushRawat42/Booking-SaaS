@@ -1,6 +1,36 @@
+'use client';
+
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CheckCircle2, Loader2 } from 'lucide-react';
 
 export default function SettingsPage() {
+  const [isProfileSaving, setIsProfileSaving] = useState(false);
+  const [profileSaved, setProfileSaved] = useState(false);
+
+  const [isPaymentSaving, setIsPaymentSaving] = useState(false);
+  const [paymentSaved, setPaymentSaved] = useState(false);
+
+  const handleSaveProfile = () => {
+    setIsProfileSaving(true);
+    setProfileSaved(false);
+    setTimeout(() => {
+      setIsProfileSaving(false);
+      setProfileSaved(true);
+      setTimeout(() => setProfileSaved(false), 3000);
+    }, 800);
+  };
+
+  const handleSavePayments = () => {
+    setIsPaymentSaving(true);
+    setPaymentSaved(false);
+    setTimeout(() => {
+      setIsPaymentSaving(false);
+      setPaymentSaved(true);
+      setTimeout(() => setPaymentSaved(false), 3000);
+    }, 800);
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -41,9 +71,25 @@ export default function SettingsPage() {
                 <option>Asia/Kolkata</option>
               </select>
             </div>
-            <button className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
-              Save Profile
-            </button>
+            <div className="flex items-center space-x-4 pt-2">
+              <button 
+                onClick={handleSaveProfile}
+                disabled={isProfileSaving}
+                className="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-not-allowed min-w-[120px]"
+              >
+                {isProfileSaving ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  'Save Profile'
+                )}
+              </button>
+              {profileSaved && (
+                <span className="flex items-center text-sm text-green-600">
+                  <CheckCircle2 className="mr-1 h-4 w-4" />
+                  Saved successfully
+                </span>
+              )}
+            </div>
           </CardContent>
         </Card>
 
@@ -106,9 +152,25 @@ export default function SettingsPage() {
               <label className="block text-sm font-medium text-gray-700">Tax / GST Details</label>
               <input type="text" placeholder="e.g. GSTIN: 22AAAAA0000A1Z5" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2" />
             </div>
-            <button className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
-              Save Payments
-            </button>
+            <div className="flex items-center space-x-4 pt-2">
+              <button 
+                onClick={handleSavePayments}
+                disabled={isPaymentSaving}
+                className="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-not-allowed min-w-[120px]"
+              >
+                {isPaymentSaving ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  'Save Payments'
+                )}
+              </button>
+              {paymentSaved && (
+                <span className="flex items-center text-sm text-green-600">
+                  <CheckCircle2 className="mr-1 h-4 w-4" />
+                  Saved successfully
+                </span>
+              )}
+            </div>
           </CardContent>
         </Card>
       </div>

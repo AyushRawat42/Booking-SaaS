@@ -8,6 +8,7 @@ import {
   Users,
   Megaphone,
   Settings,
+  LogOut,
 } from 'lucide-react';
 
 const navigation = [
@@ -43,16 +44,21 @@ export function Sidebar() {
         ))}
       </nav>
       <div className="border-t border-gray-200 p-4">
-        <div className="flex items-center">
-          <div className="flex-shrink-0">
-            <div className="h-8 w-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold">
-              O
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <div className="h-8 w-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold">
+                O
+              </div>
+            </div>
+            <div className="ml-3">
+              <p className="text-sm font-medium text-gray-700">Owner</p>
+              <p className="text-xs font-medium text-gray-500">owner@salon.com</p>
             </div>
           </div>
-          <div className="ml-3">
-            <p className="text-sm font-medium text-gray-700">Owner</p>
-            <p className="text-xs font-medium text-gray-500">owner@salon.com</p>
-          </div>
+          <Link href="/" className="text-gray-400 hover:text-gray-600" title="Log out">
+            <LogOut className="h-5 w-5" />
+          </Link>
         </div>
       </div>
     </div>

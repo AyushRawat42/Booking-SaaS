@@ -3,6 +3,7 @@ import {
   LayoutDashboard,
   Building2,
   Settings,
+  LogOut,
 } from 'lucide-react';
 
 const navigation = [
@@ -33,16 +34,21 @@ export function AdminSidebar() {
         ))}
       </nav>
       <div className="border-t border-gray-800 p-4">
-        <div className="flex items-center">
-          <div className="flex-shrink-0">
-            <div className="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold">
-              SA
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <div className="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold">
+                SA
+              </div>
+            </div>
+            <div className="ml-3">
+              <p className="text-sm font-medium text-white">Super Admin</p>
+              <p className="text-xs font-medium text-gray-400">admin@saas.com</p>
             </div>
           </div>
-          <div className="ml-3">
-            <p className="text-sm font-medium text-white">Super Admin</p>
-            <p className="text-xs font-medium text-gray-400">admin@saas.com</p>
-          </div>
+          <Link href="/" className="text-gray-400 hover:text-white" title="Log out">
+            <LogOut className="h-5 w-5" />
+          </Link>
         </div>
       </div>
     </div>
